@@ -1,5 +1,26 @@
 #include <stdio.h>
 
+void sort(float *array, short size, short type) {
+    float temp;
+    for (short i = 0; i < size; i++) {
+        for(short j = i+1; j < size; j++) {
+            if (type == 1) {
+                if (array[i] > array[j]) {
+                    temp = array[j];
+                    array[j] = array[i];
+                    array[i] = temp;
+                }
+            } else {
+                if (array[i] < array[j]) {
+                    temp = array[j];
+                    array[j] = array[i];
+                    array[i] = temp;
+                }
+            }
+        }
+    }
+}
+
 int main() {
     short n, check;
     char ch, cond;
@@ -62,23 +83,7 @@ int main() {
         ch = ' ';
     }
 
-    for (short i = 0; i < n; i++) {
-        for(short j = i+1; j < n; j++) {
-            if (check == 1) {
-                if (arr[i] > arr[j]) {
-                    float temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
-                }
-            } else {
-                if (arr[i] < arr[j]) {
-                    float temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
-                }
-            }
-        }
-    }
+    sort(&arr, n, check);
 
     for(short i = 0; i < n; i++) {
         printf("%g ", arr[i]);
